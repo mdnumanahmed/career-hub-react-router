@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import CustomLink from "./CustomLink";
+import { BiX, BiMenuAltLeft } from "react-icons/bi";
+import { useState } from "react";
 
 const CustomNav = () => {
+  const [open, setOpen] = useState(false);
   const navItems = [
     {
       id: 1,
@@ -32,13 +35,20 @@ const CustomNav = () => {
   return (
     <div>
       <div className="flex justify-between items-center">
-        <div>
+        <div className="flex gap-5">
+          <div onClick={() => setOpen(!open)} className="text-3xl  md:hidden">
+            {!open ? <BiMenuAltLeft /> : <BiX />}
+          </div>
           <Link to={"/"} className="text-3xl font-extrabold text-[#1A1919]">
             Career Hub
           </Link>
         </div>
         <div>
-          <ul className="custom-nav flex gap-4">
+          <ul
+            className={`${
+              open ? "left-0 top-14" : "-top-60 left-0"
+            } custom-nav absolute md:static duration-1000 p-6 md:p-0 bg-indigo-300 md:bg-transparent rounded-lg md:rounded-none flex-row space-y-4 md:space-y-0 md:flex gap-4`}
+          >
             {navItems.map((navItem) => (
               <CustomLink key={navItem.id} navItem={navItem} />
             ))}
