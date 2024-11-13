@@ -7,3 +7,14 @@
 body{
     font-family: "Manrope", sans-serif;
 }
+
+.bg-linear{
+    @apply bg-gradient-to-r from-[#7E90FE] to-[#9873FF]
+}
+.text-linear{
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-[#7E90FE] to-[#9873FF]
+}
+
+.custom-nav a.active{
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-[#7E90FE] to-[#9873FF]
+}
