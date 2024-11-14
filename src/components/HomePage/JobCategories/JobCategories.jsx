@@ -4,7 +4,6 @@ import JobCategory from "./JobCategory";
 
 const JobCategories = () => {
   const categories = useLoaderData();
-  console.log(categories);
   return (
     <div className="container mx-auto">
       <SectionTitle

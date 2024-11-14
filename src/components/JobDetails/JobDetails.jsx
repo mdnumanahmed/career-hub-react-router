@@ -1,3 +1,5 @@
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useLoaderData, useParams } from "react-router-dom";
 import { BiCalendar, BiEnvelope, BiMap, BiPhone } from "react-icons/bi";
 import { TbCoinTaka } from "react-icons/tb";
@@ -7,7 +9,6 @@ const JobDetails = () => {
   const jobs = useLoaderData();
   const { id } = useParams();
   const job = jobs.find((job) => job.id === +id);
-  console.log(job, id);
   const {
     contact_information,
     educational_requirements,
@@ -15,14 +16,12 @@ const JobDetails = () => {
     job_description,
     job_responsibility,
     job_title,
-    job_type,
-    location,
-    remote_or_onsite,
     salary,
   } = job;
 
   const handleSaveId = (id) => {
     saveJobApplication(id);
+    toast("Your job application submitted successfully");
   };
 
   return (
@@ -104,6 +103,7 @@ const JobDetails = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
