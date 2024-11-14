@@ -12,7 +12,7 @@ const JobCategories = () => {
         subTitle="Explore thousands of job opportunities with all the information you need. Its your future"
       />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {categories.map((category) => (
+        {categories?.map((category) => (
           <JobCategory key={category.id} category={category} />
         ))}
       </div>

@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { FiMapPin } from "react-icons/fi";
 import { TbCoinTaka } from "react-icons/tb";
+import { useNavigate } from "react-router-dom";
 const FeaturedJob = ({ job }) => {
   const {
     id,
@@ -12,8 +13,15 @@ const FeaturedJob = ({ job }) => {
     remote_or_onsite,
     salary,
   } = job;
+
+  const navigate = useNavigate();
+
+  const handleShowDetails = (id) => {
+    navigate(`/job/${id}`);
+  };
+
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 border-2 rounded-lg p-4">
       <img src={logo} alt="" className="w-auto max-h-20 object-fill" />
       <h3 className="text-2xl font-extrabold text-dark02">{job_title}</h3>
       <p className="text-xl font-semibold text-dark03">{company_name}</p>
@@ -43,7 +51,7 @@ const FeaturedJob = ({ job }) => {
           {salary}
         </div>
       </div>
-      <button className="btn" onClick={id}>
+      <button className="btn" onClick={() => handleShowDetails(id)}>
         View Details
       </button>
     </div>

@@ -40,7 +40,7 @@ const CustomNav = () => {
             {!open ? <BiMenuAltLeft /> : <BiX />}
           </div>
           <Link
-            to={"/"}
+            to="/"
             className="text-2xl md:text-3xl font-extrabold text-[#1A1919]"
           >
             Career Hub
