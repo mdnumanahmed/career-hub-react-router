@@ -44,6 +44,7 @@ const CustomNav = () => {
   //   backgroundRepeat: "no-repeat,no-repeat",
   // };
   // bg-linear-5;
+
   return (
     <div
       className={`${
@@ -91,6 +92,8 @@ const CustomNav = () => {
             ? "Applied Jobs"
             : location.pathname === "/blogs"
             ? "Blogs"
+            : location.pathname.slice(0, 4) === "/job"
+            ? "Job Details"
             : ""}
         </PageTitle>
       )}
