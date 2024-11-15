@@ -8,6 +8,8 @@ import JobDetails from "./components/JobDetails/JobDetails.jsx";
 import AppliedJobs from "./components/AppliedJobs/AppliedJobs.jsx";
 import JobsContextProvider from "./components/Provider/JobsContextProvider.jsx";
 import Jobs from "./components/Jobs/Jobs.jsx";
+import Blogs from "./components/Blogs/Blogs.jsx";
+import Statistics from "./components/Statistics/Statistics.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +20,10 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
         loader: () => fetch("/categories.json"),
+      },
+      {
+        path: "/statistics",
+        element: <Statistics />,
       },
       {
         path: "/jobs",
@@ -32,6 +38,10 @@ const router = createBrowserRouter([
         path: "/applied-jobs",
         loader: () => fetch("/jobs.json"),
         element: <AppliedJobs />,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs />,
       },
     ],
   },
