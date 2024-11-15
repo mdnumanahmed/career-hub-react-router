@@ -18,13 +18,17 @@ const FeaturedJobs = () => {
         title="Featured Jobs"
         subTitle="Explore thousands of job opportunities with all the information you need. Its your future"
       />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-14">
         {featuredJobs.slice(0, limit).map((job) => (
           <FeaturedJob key={job.id} job={job} />
         ))}
       </div>
 
-      <div className="text-center my-14">
+      <div
+        className={`${
+          limit === featuredJobs.length && "hidden"
+        } text-center mb-14`}
+      >
         <button onClick={() => setLimit(featuredJobs.length)} className="btn">
           Show All
         </button>

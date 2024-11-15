@@ -3,7 +3,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { useLoaderData, useParams } from "react-router-dom";
 import { BiCalendar, BiEnvelope, BiMap, BiPhone } from "react-icons/bi";
 import { TbCoinTaka } from "react-icons/tb";
-import { saveJobApplication } from "../../utilities/fakeDb";
+import {
+  getStoredApplication,
+  saveJobApplication,
+} from "../../utilities/fakeDb";
 
 const JobDetails = () => {
   const jobs = useLoaderData();
@@ -20,8 +23,13 @@ const JobDetails = () => {
   } = job;
 
   const handleSaveId = (id) => {
-    saveJobApplication(id);
-    toast("Your job application submitted successfully");
+    const storedJobs = getStoredApplication();
+    const exists = storedJobs.find((storedId) => storedId === id);
+    if (!exists) {
+      saveJobApplication(id);
+      toast("Your application submitted successfully");
+    }
+    toast.warning("You have already applied!");
   };
 
   return (
