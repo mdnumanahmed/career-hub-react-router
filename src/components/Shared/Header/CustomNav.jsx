@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import CustomLink from "./CustomLink";
 import { BiX, BiMenuAltLeft } from "react-icons/bi";
 import { useState } from "react";
+import PageTitle from "../PageTitle/PageTitle";
 
 const CustomNav = () => {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
   const navItems = [
     {
       id: 1,
@@ -32,8 +34,24 @@ const CustomNav = () => {
       path: "/blogs",
     },
   ];
+
+  // const bgStyle = {
+  //   backgroundColor: "grey",
+  //   backgroundImage:
+  //     "url('./assets/images/bg1.png'),url('./assets/images/bg2.png')",
+  //   backgroundPosition: "top left, bottom right",
+  //   background_Size: "25px, 25px",
+  //   backgroundRepeat: "no-repeat,no-repeat",
+  // };
+  // bg-linear-5;
   return (
-    <div className="bg-linear-5">
+    <div
+      className={`${
+        location.pathname === "/"
+          ? "bg-linear-5"
+          : "bg-blue-50 [background-image:url(./assets/images/bg1.png),_url(./assets/images/bg2.png)] bg-no-repeat [background-size:200px,200px] [background-position:left_bottom,right_top]"
+      }`}
+    >
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex gap-5">
           <div onClick={() => setOpen(!open)} className="text-3xl lg:hidden">
@@ -63,6 +81,19 @@ const CustomNav = () => {
           </button>
         </div>
       </div>
+      {location.pathname !== "/" && (
+        <PageTitle>
+          {location.pathname === "/statistics"
+            ? "Statistics"
+            : location.pathname === "/jobs"
+            ? "All Jobs"
+            : location.pathname === "/applied-jobs"
+            ? "Applied Jobs"
+            : location.pathname === "/blogs"
+            ? "Blogs"
+            : ""}
+        </PageTitle>
+      )}
     </div>
   );
 };
